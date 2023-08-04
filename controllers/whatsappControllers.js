@@ -12,22 +12,32 @@ const VerifyToken = (req = request, res = response) => {
         const challenge = req.query["hub.challenge"];
 
 
-        if(challenge != null && token != null && token == accessToken){
+        if (challenge != null && token != null && token == accessToken) {
             console.log('Termina bien');
-            res.send(challenge); 
+            res.send(challenge);
         } else {
             console.log('ermina con error');
             res.status(400).send();
         }
 
-    } catch(e){
+    } catch (e) {
         console.log('Termina con error');
         res.status(400).send();
     }
 };
 
 const ReceivedMessage = (req = request, res = response) => {
-    res.json({ msg: 'ReceivedMessage' })
+    try {
+        const entry = req.body["entry"][0];
+        const changes = entry["changes"][0];
+        const value = changes["value"];
+        const messageObject = value["messages"];
+        console.log(messageObject);
+        res.send("EVENT_RECEIVED");
+    } catch (error) {
+        console.log(e);
+        res.send("EVENT_RECEIVED");
+    }
 };
 
 module.exports = { VerifyToken, ReceivedMessage };
