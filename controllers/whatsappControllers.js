@@ -7,7 +7,7 @@ const VerifyToken = (req = request, res = response) => {
 
         console.log('Entro');
 
-        const accessToken = "jeza077.";
+        const accessToken = process.env.TOKEN_WHATSAPP;
         const token = req.query["hub.verify_token"];
         const challenge = req.query["hub.challenge"];
 
