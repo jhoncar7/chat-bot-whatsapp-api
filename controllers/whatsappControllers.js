@@ -4,15 +4,24 @@ const request = express.request;
 
 const VerifyToken = (req = request, res = response) => {
     try {
-        const accessToken = process.env.TOKEN_WHATSAPP;
-        const token = req.query['hub.verify_token'];
-        const challenge = req.query['hub.challenge'];
-        if(!challenge && !token && token==challenge){
-            res.send(challenge);
-        }else{
+
+        console.log('Entro');
+
+        const accessToken = "jeza077.";
+        const token = req.query["hub.verify_token"];
+        const challenge = req.query["hub.challenge"];
+
+
+        if(challenge != null && token != null && token == accessToken){
+            console.log('Termina bien');
+            res.send(challenge); 
+        } else {
+            console.log('ermina con error');
             res.status(400).send();
         }
-    } catch (error) {
+
+    } catch(e){
+        console.log('Termina con error');
         res.status(400).send();
     }
 };
