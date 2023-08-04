@@ -1,0 +1,650 @@
+{
+	"info": {
+		"_postman_id": "af65d620-be94-43dc-93ed-6d6875cf3693",
+		"name": "WhatsApp - API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4919493"
+	},
+	"item": [
+		{
+			"name": "Mensajes",
+			"item": [
+				{
+					"name": "Send Message Text",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"preview_url\": false,\r\n    \"recipient_type\": \"individual\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"text\",\r\n    \"text\": {\r\n        \"body\": \"Hola Jhon\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Text Formate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"preview_url\": false,\r\n    \"recipient_type\": \"individual\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"text\",\r\n    \"text\": {\r\n        \"body\": \"*Negrita* - _Cursiva_ - ~Tachado~ - ```Bloque de codigo``` - Bloque de codigo normal\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Text URL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"text\": {\r\n        \"preview_url\": true,\r\n        \"body\": \"Please visit https://youtu.be/hpltvTEiRrY to inspire your day!\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"preview_url\": false,\r\n    \"recipient_type\": \"individual\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"image\",\r\n    \"image\": {\r\n        \"link\": \"https://www.shutterstock.com/shutterstock/photos/1877611342/display_1500/stock-photo-environmental-problems-drought-desertification-thirst-pollution-of-our-land-and-bad-scenarios-1877611342.jpg\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Audio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"audio\",\r\n    \"audio\": {\r\n        \"link\": \"https://res.cloudinary.com/dwvono9at/video/upload/v1691107804/test-song_bgdrgx.ogg\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Document",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"document\",\r\n    \"document\": {\r\n        \"link\": \"https://res.cloudinary.com/dwvono9at/image/upload/v1691107964/fluter.pdf\",\r\n        \"caption\":\"Palabrotas Flutter\",\r\n        \"filename\":\"Palabrotas Flutter!\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Video",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"video\",\r\n    \"video\": {\r\n        \"link\": \"https://res.cloudinary.com/dwvono9at/video/upload/v1691108492/test-video_osumf1.mp4\",\r\n        \"caption\":\"Test Video\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Stiker",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"sticker\",\r\n    \"sticker\": {\r\n        \"link\": \"https://res.cloudinary.com/dwvono9at/image/upload/v1691109066/HappyFace-_1__xqmzmr.webp\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"location\",\r\n    \"location\":{\r\n        \"latitude\":\"-34.54576577714616\",\r\n        \"longitude\":\"-58.449612546022536\",\r\n        \"name\":\"River Plate- el mejor estadio del mundo\",\r\n        \"address\":\"Av. Pres. Figueroa Alcorta 7597, C1428 CABA\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Buttons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"recipient_type\": \"individual\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"interactive\",\r\n    \"interactive\": {\r\n        \"type\": \"button\",\r\n        \"body\": {\r\n            \"text\": \"Are you hungry?\"\r\n        },\r\n        \"action\": {\r\n            \"buttons\": [\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"unique-id-123\",\r\n                        \"title\": \"✅Yes\"\r\n                    }\r\n                },\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"unique-id-456\",\r\n                        \"title\": \"❌No\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Buttons Title",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"recipient_type\": \"individual\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"interactive\",\r\n    \"interactive\": {\r\n        \"type\": \"button\",\r\n        \"header\":{\r\n            \"type\":\"text\",\r\n            \"text\":\"El restaurante\"\r\n        },\r\n        \"body\": {\r\n            \"text\": \"Are you hungry?\"\r\n        },\r\n        \"action\": {\r\n            \"buttons\": [\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"unique-id-123\",\r\n                        \"title\": \"✅Yes\"\r\n                    }\r\n                },\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"unique-id-456\",\r\n                        \"title\": \"❌No\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Buttons Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"recipient_type\": \"individual\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"interactive\",\r\n    \"interactive\": {\r\n        \"type\": \"button\",\r\n        \"header\":{\r\n            \"type\":\"image\",\r\n            \"image\":{\r\n                \"link\":\"https://www.shutterstock.com/shutterstock/photos/1877611342/display_1500/stock-photo-environmental-problems-drought-desertification-thirst-pollution-of-our-land-and-bad-scenarios-1877611342.jpg\"\r\n            }\r\n        },\r\n        \"body\": {\r\n            \"text\": \"Are you hungry?\"\r\n        },\r\n        \"action\": {\r\n            \"buttons\": [\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"unique-id-123\",\r\n                        \"title\": \"✅Yes\"\r\n                    }\r\n                },\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"unique-id-456\",\r\n                        \"title\": \"❌No\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Buttons Document",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"recipient_type\": \"individual\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"interactive\",\r\n    \"interactive\": {\r\n        \"type\": \"button\",\r\n        \"header\":{\r\n            \"type\":\"document\",\r\n            \"document\":{\r\n                \"link\":\"https://res.cloudinary.com/dwvono9at/image/upload/v1691107964/fluter.pdf\",\r\n                \"filename\":\"menu\"\r\n            }\r\n        },\r\n        \"body\": {\r\n            \"text\": \"Are you hungry?\"\r\n        },\r\n        \"action\": {\r\n            \"buttons\": [\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"unique-id-123\",\r\n                        \"title\": \"✅Yes\"\r\n                    }\r\n                },\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"unique-id-456\",\r\n                        \"title\": \"❌No\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message Buttons Video",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"recipient_type\": \"individual\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"interactive\",\r\n    \"interactive\": {\r\n        \"type\": \"button\",\r\n        \"header\":{\r\n            \"type\":\"video\",\r\n            \"video\":{\r\n                \"link\":\"https://res.cloudinary.com/dwvono9at/video/upload/v1691108492/test-video_osumf1.mp4\"\r\n            }\r\n        },\r\n        \"body\": {\r\n            \"text\": \"Are you hungry?\"\r\n        },\r\n        \"action\": {\r\n            \"buttons\": [\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"unique-id-123\",\r\n                        \"title\": \"✅Yes\"\r\n                    }\r\n                },\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"unique-id-456\",\r\n                        \"title\": \"❌No\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Templates",
+			"item": [
+				{
+					"name": "Send",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token-auth}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"messaging_product\": \"whatsapp\",\r\n    \"to\": \"{{phone-number}}\",\r\n    \"type\": \"template\",\r\n    \"template\": {\r\n        \"name\": \"hello_world\",\r\n        \"language\": {\r\n            \"code\": \"en_US\"\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://graph.facebook.com/v17.0/{{id-phone}}/messages",
+							"protocol": "https",
+							"host": [
+								"graph",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"v17.0",
+								"{{id-phone}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
