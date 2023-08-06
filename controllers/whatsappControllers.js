@@ -30,10 +30,16 @@ const ReceivedMessage = (req = request, res = response) => {
     try {
 
         console.log('req.body: ', req.body);
-        
+
         const entry = req.body["entry"][0];
+        console.log('Entry: ',req.body['entry']);
+
         const changes = entry["changes"][0];
+        // console.log('changes: ',req.body['changes']);
+        
         const value = changes["value"];
+        // console.log('value: ',req.body['value']);
+        
         const messageObject = value["messages"];
 
         console.log('messageObject: ', messageObject);
@@ -44,7 +50,7 @@ const ReceivedMessage = (req = request, res = response) => {
 
         res.send("EVENT_RECEIVED");
     } catch (error) {
-        console.log(e);
+        console.log(error);
         res.send("EVENT_RECEIVED");
     }
 };
