@@ -33,11 +33,45 @@ const ReceivedMessage = (req = request, res = response) => {
         const value = changes["value"];
         const messageObject = value["messages"];
         console.log(messageObject);
+
+        const text = getTextUser(messageObject[0]);
+
         res.send("EVENT_RECEIVED");
     } catch (error) {
         console.log(e);
         res.send("EVENT_RECEIVED");
     }
 };
+
+const getTextUser = (message) => {
+
+    let text = '';
+    const typeMessage = message['type'];
+
+    if (typeMessage == 'text')
+        text = message['text']['body'];
+
+    else if (typeMessage == 'interactive') {
+
+        const interactiveObject = message['interactive']
+        const typeInteractive = interactiveObject['type'];
+
+        console.log('interactiveObject: ', interactiveObject);
+
+        if (typeInteractive == 'button_reply')
+            text = interactiveObject['button_reply']['title'];
+
+        else if (typeInteractive == 'list_reply')
+            text = interactiveObject['list_reply']['title'];
+
+        else
+            console.log('Sin mensaje en INTERACTIVE');
+
+    } else
+        console.log('Sin mensaje en TEXT');
+
+    return text;
+
+}
 
 module.exports = { VerifyToken, ReceivedMessage };
