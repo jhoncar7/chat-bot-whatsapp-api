@@ -42,11 +42,11 @@ const ReceivedMessage = (req = request, res = response) => {
 
         const messageObject = value["messages"];
 
-        console.log('messageObject: ', messageObject);
-
-        const text = getTextUser(messageObject[0]);
-
-        console.log('text: ', text);
+        if(messageObject){
+            console.log('messageObject: ', messageObject);
+            const text = getTextUser(messageObject[0]);
+            console.log('text: ', text);
+        }
 
         res.send("EVENT_RECEIVED");
     } catch (error) {
