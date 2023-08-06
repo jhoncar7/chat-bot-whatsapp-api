@@ -32,9 +32,12 @@ const ReceivedMessage = (req = request, res = response) => {
         const changes = entry["changes"][0];
         const value = changes["value"];
         const messageObject = value["messages"];
-        console.log(messageObject);
+        
+        console.log('messageObject: ', messageObject);
 
         const text = getTextUser(messageObject[0]);
+
+        console.log('text: ', text);
 
         res.send("EVENT_RECEIVED");
     } catch (error) {
