@@ -28,11 +28,14 @@ const VerifyToken = (req = request, res = response) => {
 
 const ReceivedMessage = (req = request, res = response) => {
     try {
+
+        console.log('req.body: ', req.body);
+        
         const entry = req.body["entry"][0];
         const changes = entry["changes"][0];
         const value = changes["value"];
         const messageObject = value["messages"];
-        
+
         console.log('messageObject: ', messageObject);
 
         const text = getTextUser(messageObject[0]);
