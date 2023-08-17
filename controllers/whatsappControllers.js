@@ -33,21 +33,19 @@ const ReceivedMessage = (req = request, res = response) => {
         console.log('req.body: ', req.body);
 
         const entry = req.body["entry"][0];
-        console.log('Entry: ', entry);
-
+        // console.log('Entry: ', entry); #guardarlo y luego ver el documento json
         const changes = entry["changes"][0];
-        console.log('changes: ', changes);
-
+        const name = changes['value']['contacts']['profile']['name'];
+        const number = changes['value']['contacts']['wa_id'];
         const value = changes["value"];
-        console.log('value: ', value);
 
         const messageObject = value["messages"];
 
         if (messageObject) {
             console.log('messageObject: ', messageObject);
             const text = getTextUser(messageObject[0]);
-            const number = messageObject[0]['from'];
-                   sendMessageWhatsapp(`El usuario dijo: ${text}`, number)
+                   sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
+                   sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
         }
 
         res.send("EVENT_RECEIVED");
