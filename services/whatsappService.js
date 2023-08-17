@@ -1,6 +1,9 @@
 const https = require('https');
 
 const sendMessageWhatsapp = (textResponse, number) => {
+
+    console.log({ textResponse, number });
+
     const data = JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
