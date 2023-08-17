@@ -1,4 +1,5 @@
 const express = require('express');
+const { sendMessageWhatsapp } = require('../services/whatsappService');
 const response = express.response;
 const request = express.request;
 
@@ -42,10 +43,13 @@ const ReceivedMessage = (req = request, res = response) => {
 
         const messageObject = value["messages"];
 
-        if(messageObject){
+        if (messageObject) {
             console.log('messageObject: ', messageObject);
             const text = getTextUser(messageObject[0]);
+            const number = messageObject[0]['from'];
             console.log('text: ', text);
+
+            sendMessageWhatsapp(`El usuario dijo: ${text}`, number)
         }
 
         res.send("EVENT_RECEIVED");
