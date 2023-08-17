@@ -26,7 +26,7 @@ const sendMessageWhatsapp = (textResponse, number) => {
 
     const req = https.request(options, res => {
         res.on("data", d => {
-            console.log("data: ", d);
+            process.stdout.write(d);
         });
     });
 
