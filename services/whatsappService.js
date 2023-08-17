@@ -15,7 +15,7 @@ const sendMessageWhatsapp = (textResponse, number) => {
 
     const options = {
         host: "graph.facebook.com",
-        path: `v17.0/${process.env.ID_PHONE}/messages`,
+        path: `/v17.0/${process.env.ID_PHONE}/messages`,
         method: "POST",
         body: data,
         headers: {
