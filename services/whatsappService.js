@@ -15,7 +15,7 @@ const sendMessageWhatsapp = (textResponse, number) => {
         path: `v17.0/${process.env.ID_PHONE}/messages`,
         method: "POST",
         body: data,
-        header: {
+        headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${process.env.TOKEN}`
         },
