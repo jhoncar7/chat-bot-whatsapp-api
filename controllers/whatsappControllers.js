@@ -1,5 +1,6 @@
 const express = require('express');
 const { sendMessageWhatsapp } = require('../services/whatsappService');
+const { Whatsapp } = require('../models');
 const response = express.response;
 const request = express.request;
 
@@ -27,13 +28,22 @@ const VerifyToken = (req = request, res = response) => {
     }
 };
 
-const ReceivedMessage = (req = request, res = response) => {
+// const test = async (msg) => {
+//     data = { 'test': '1', data: msg }
+// const result = new Whatsapp({ data });
+// await result.save();
+// }
+
+const ReceivedMessage = async (req = request, res = response) => {
     try {
 
-        console.log('req.body: ', req.body);
+        // console.log('req.body: ', req.body);
+        // console.log('Entry: ', req.body["entry"]); //guardarlo y luego ver el documento json
+        const d = req.body;
+        const result = new Whatsapp(d);
+        await result.save();
 
         const entry = req.body["entry"][0];
-        // console.log('Entry: ', entry); #guardarlo y luego ver el documento json
         const changes = entry["changes"][0];
         const name = changes['value']['contacts']['profile']['name'];
         const number = changes['value']['contacts']['wa_id'];
@@ -44,8 +54,8 @@ const ReceivedMessage = (req = request, res = response) => {
         if (messageObject) {
             console.log('messageObject: ', messageObject);
             const text = getTextUser(messageObject[0]);
-                   sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
-                   sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
+            sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
+            sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
         }
 
         res.send("EVENT_RECEIVED");
