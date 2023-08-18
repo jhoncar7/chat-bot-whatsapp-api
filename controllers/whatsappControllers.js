@@ -18,7 +18,7 @@ const VerifyToken = (req = request, res = response) => {
             console.log('Termina bien');
             res.send(challenge);
         } else {
-            console.log('ermina con error');
+            console.log('Termina con error');
             res.status(400).send();
         }
 
@@ -32,30 +32,25 @@ const VerifyToken = (req = request, res = response) => {
 const ReceivedMessage = async (req = request, res = response) => {
     try {
 
-        const d = req.body;
-        const result = new Whatsapp({ data: d });
-        await result.save();
+        const entry = req.body["entry"][0];
+        const changes = entry["changes"][0];
+        const value = changes["value"];
 
+        const name = value['contacts'][0]['profile']['name'];
+        let number = value['contacts'][0]['wa_id'];
+        number = normalizeNumber(number);
 
-        // const entry = req.body["entry"][0];
-        // const changes = entry["changes"][0];
-        // const value = changes["value"];
+        const messageObject = value["messages"];
 
-        // const name = value['contacts'][0]['profile']['name'];
-        // let number = value['contacts'][0]['wa_id'];
-        // number = normalizeNumber(number);
+        if (messageObject) {
+            console.log('messageObject: ', messageObject);
+            const text = getTextUser(messageObject[0]);
 
-        // const messageObject = value["messages"];
+            console.log({ text });
 
-        // if (messageObject) {
-        //     console.log('messageObject: ', messageObject);
-        //     const text = getTextUser(messageObject[0]);
-
-        //     console.log({ text });
-
-        //     sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
-        //     sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
-        // }
+            sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
+            sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
+        }
 
         res.send("EVENT_RECEIVED");
     } catch (error) {
