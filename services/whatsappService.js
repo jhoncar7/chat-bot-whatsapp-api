@@ -59,7 +59,7 @@ const sendMessageWhatsapp = async (textResponse, number) => {
             }
         });
 
-        console.log('Response:', response.data);
+        // console.log('Response:', response.data);
     } catch (error) {
         console.error('Error sendMessageWhatsapp:', error);
     }
