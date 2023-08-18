@@ -1,6 +1,5 @@
 const express = require('express');
 const { sendMessageWhatsapp } = require('../services/whatsappService');
-const { Whatsapp } = require('../models');
 const response = express.response;
 const request = express.request;
 
@@ -28,29 +27,18 @@ const VerifyToken = (req = request, res = response) => {
     }
 };
 
-// const test = async (msg) => {
-//     data = { 'test': '1', data: msg }
-// const result = new Whatsapp({ data });
-// await result.save();
-// }
 
 const ReceivedMessage = async (req = request, res = response) => {
     try {
-
-        // console.log('req.body: ', req.body);
-        // console.log('Entry: ', req.body["entry"]); //guardarlo y luego ver el documento json
-        // const d = req.body;
-        // console.log(d);
-        // console.log(typeof (d));
-        // const result = new Whatsapp({ data: d });
-        // await result.save();
 
         const entry = req.body["entry"][0];
         const changes = entry["changes"][0];
         const value = changes["value"];
 
         const name = value['contacts'][0]['profile']['name'];
-        const number = value['contacts'][0]['wa_id'];
+        let number = value['contacts'][0]['wa_id'];
+
+        number = number.replace('549', '54');
 
         const messageObject = value["messages"];
 
