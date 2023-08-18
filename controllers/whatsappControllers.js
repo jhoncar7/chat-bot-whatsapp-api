@@ -41,8 +41,8 @@ const ReceivedMessage = async (req = request, res = response) => {
         // console.log('Entry: ', req.body["entry"]); //guardarlo y luego ver el documento json
         const d = req.body;
         console.log(d);
-        console.log(typeof(d));
-        const result = new Whatsapp({d});
+        console.log(typeof (d));
+        const result = new Whatsapp({ data: d });
         await result.save();
 
         const entry = req.body["entry"][0];
