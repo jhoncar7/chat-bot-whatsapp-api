@@ -32,6 +32,8 @@ const VerifyToken = (req = request, res = response) => {
 const ReceivedMessage = async (req = request, res = response) => {
     try {
 
+        console.log('entro al metodo ReceivedMessage');
+
         const entry = req.body["entry"][0];
         const changes = entry["changes"][0];
         const value = changes["value"];
