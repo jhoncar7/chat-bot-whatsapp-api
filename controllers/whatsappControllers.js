@@ -47,8 +47,8 @@ const ReceivedMessage = async (req = request, res = response) => {
     
             const text = getTextUser(messageObject[0]);
 
-            sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
-            sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
+            // sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
+            // sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
         }
 
         res.send("EVENT_RECEIVED");
