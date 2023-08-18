@@ -36,17 +36,14 @@ const ReceivedMessage = async (req = request, res = response) => {
         const changes = entry["changes"][0];
         const value = changes["value"];
 
-        const name = value['contacts'][0]['profile']['name'];
-        let number = value['contacts'][0]['wa_id'];
-        number = normalizeNumber(number);
-
         const messageObject = value["messages"];
 
         if (messageObject) {
-            console.log('messageObject: ', messageObject);
+            const name = value['contacts'][0]['profile']['name'];
+            let number = value['contacts'][0]['wa_id'];
+            number = normalizeNumber(number);
+    
             const text = getTextUser(messageObject[0]);
-
-            console.log({ text });
 
             sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
             sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
