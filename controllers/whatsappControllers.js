@@ -42,7 +42,7 @@ const ReceivedMessage = async (req = request, res = response) => {
         const d = req.body;
         console.log(d);
         console.log(typeof(d));
-        const result = new Whatsapp(d);
+        const result = new Whatsapp({d});
         await result.save();
 
         const entry = req.body["entry"][0];
