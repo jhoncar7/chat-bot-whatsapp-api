@@ -30,7 +30,9 @@ const VerifyToken = (req = request, res = response) => {
 
 const ReceivedMessage = async (req = request, res = response) => {
     try {
-
+        const body = req.body;
+        console.log({ body });
+        console.log(typeof (body));
         const entry = req.body["entry"][0];
         const changes = entry["changes"][0];
         const value = changes["value"];
