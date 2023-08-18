@@ -1,5 +1,6 @@
 const express = require('express');
 const { sendMessageWhatsapp } = require('../services/whatsappService');
+const { Whatsapp } = require('../models');
 const response = express.response;
 const request = express.request;
 
@@ -30,28 +31,31 @@ const VerifyToken = (req = request, res = response) => {
 
 const ReceivedMessage = async (req = request, res = response) => {
     try {
-        const body = req.body;
-        console.log({ body });
-        console.log(typeof (body));
-        const entry = req.body["entry"][0];
-        const changes = entry["changes"][0];
-        const value = changes["value"];
 
-        const name = value['contacts'][0]['profile']['name'];
-        let number = value['contacts'][0]['wa_id'];
-        number = normalizeNumber(number);
+        const d = req.body;
+        const result = new Whatsapp({ data: d });
+        await result.save();
 
-        const messageObject = value["messages"];
 
-        if (messageObject) {
-            console.log('messageObject: ', messageObject);
-            const text = getTextUser(messageObject[0]);
+        // const entry = req.body["entry"][0];
+        // const changes = entry["changes"][0];
+        // const value = changes["value"];
 
-            console.log({ text });
+        // const name = value['contacts'][0]['profile']['name'];
+        // let number = value['contacts'][0]['wa_id'];
+        // number = normalizeNumber(number);
 
-            // sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
-            // sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
-        }
+        // const messageObject = value["messages"];
+
+        // if (messageObject) {
+        //     console.log('messageObject: ', messageObject);
+        //     const text = getTextUser(messageObject[0]);
+
+        //     console.log({ text });
+
+        //     sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
+        //     sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
+        // }
 
         res.send("EVENT_RECEIVED");
     } catch (error) {
