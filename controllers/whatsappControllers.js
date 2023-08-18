@@ -49,7 +49,7 @@ const ReceivedMessage = async (req = request, res = response) => {
 
             console.log({ text });
 
-            sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
+            // sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
             // sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
         }
 
