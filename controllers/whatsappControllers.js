@@ -40,12 +40,14 @@ const ReceivedMessage = async (req = request, res = response) => {
         // console.log('req.body: ', req.body);
         // console.log('Entry: ', req.body["entry"]); //guardarlo y luego ver el documento json
         const d = req.body;
+        console.log(d);
+        console.log(typeof(d));
         const result = new Whatsapp(d);
         await result.save();
 
         const entry = req.body["entry"][0];
         const changes = entry["changes"][0];
-        const name = changes['value']['contacts']['profile']['name'];
+        // const name = changes['value']['contacts']['profile']['name'];
         const number = changes['value']['contacts']['wa_id'];
         const value = changes["value"];
 
@@ -54,7 +56,7 @@ const ReceivedMessage = async (req = request, res = response) => {
         if (messageObject) {
             console.log('messageObject: ', messageObject);
             const text = getTextUser(messageObject[0]);
-            sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
+            // sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
             sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
         }
 
