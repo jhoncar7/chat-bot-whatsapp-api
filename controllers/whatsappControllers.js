@@ -53,7 +53,7 @@ const ReceivedMessage = async (req = request, res = response) => {
 
         res.send("EVENT_RECEIVED");
     } catch (error) {
-        console.log(error);
+        console.log('error ReceivedMessage: ', error);
         res.send("EVENT_RECEIVED");
     }
 };
