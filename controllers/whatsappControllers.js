@@ -37,16 +37,18 @@ const ReceivedMessage = async (req = request, res = response) => {
 
         const name = value['contacts'][0]['profile']['name'];
         let number = value['contacts'][0]['wa_id'];
-
-        number = number.replace('549', '54');
+        number = normalizeNumber(number);
 
         const messageObject = value["messages"];
 
         if (messageObject) {
             console.log('messageObject: ', messageObject);
             const text = getTextUser(messageObject[0]);
+
+            console.log({ text });
+
             sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
-            sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
+            // sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
         }
 
         res.send("EVENT_RECEIVED");
@@ -86,5 +88,9 @@ const getTextUser = (message) => {
     return text;
 
 }
+
+const normalizeNumber = (number) => {
+    return number.startsWith('549') ? '54' + number.substring(3) : number;
+};
 
 module.exports = { VerifyToken, ReceivedMessage };
