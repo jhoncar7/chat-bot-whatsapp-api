@@ -1,42 +1,68 @@
-const https = require('https');
+// const https = require('https');
 
-const sendMessageWhatsapp = (textResponse, number) => {
+// const sendMessageWhatsapp = (textResponse, number) => {
 
-    console.log({ textResponse, number });
+//     const data = JSON.stringify({
+//         "messaging_product": "whatsapp",
+//         "to": number,
+//         "text": {
+//             "body": textResponse
+//         },
+//         "type": "text"
+//     });
 
-    const data = JSON.stringify({
-        "messaging_product": "whatsapp",
-        "to": number,
-        "text": {
-            "body": textResponse
-        },
-        "type": "text"
-    });
+//     const options = {
+//         host: "graph.facebook.com",
+//         path: `/v17.0/${process.env.ID_PHONE}/messages`,
+//         method: "POST",
+//         body: data,
+//         headers: {
+//             "Content-Type": "application/json",
+//             Authorization: `Bearer ${process.env.TOKEN}`
+//         },
+//     };
 
-    const options = {
-        host: "graph.facebook.com",
-        path: `/v17.0/${process.env.ID_PHONE}/messages`,
-        method: "POST",
-        body: data,
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.TOKEN}`
-        },
-    };
+//     const req = https.request(options, res => {
+//         res.on("data", d => {
+//             process.stdout.write(d);
+//         });
+//     });
 
-    const req = https.request(options, res => {
-        res.on("data", d => {
-            process.stdout.write(d);
+//     req.on("error", error => {
+//         console.error("error: ", error);
+//     });
+
+//     req.write(data);
+//     req.end();
+
+// };
+
+
+const axios = require('axios');
+
+const sendMessageWhatsapp = async (textResponse, number) => {
+    try {
+
+        const data = {
+            messaging_product: "whatsapp",
+            to: number,
+            type: "text",
+            text: {
+                body: textResponse
+            },
+        };
+
+        const response = await axios.post(`https://graph.facebook.com/v17.0/${process.env.ID_PHONE}/messages`, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${process.env.TOKEN}`
+            }
         });
-    });
 
-    req.on("error", error => {
-        console.error("error: ", error);
-    });
-
-    req.write(data);
-    req.end();
-
+        console.log('Response:', response.data);
+    } catch (error) {
+        console.error('Error sendMessageWhatsapp:', error);
+    }
 };
 
 module.exports = {
