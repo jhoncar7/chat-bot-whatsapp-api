@@ -29,24 +29,24 @@ const process = (textUser, number) => {
 
     }
     else if (textUser.includes("vender")) {
-        const model = messageText("👉 Regístrate en el siguiente formulario para poder evaluarte: https://form.jotform.com/222507994363665", number);
-        models.push(model);
+        // const model = messageText("👉 Regístrate en el siguiente formulario para poder evaluarte: https://form.jotform.com/222507994363665", number);
+        // models.push(model);
     }
     else if (textUser.includes("agencia")) {
-        const model = messageText("Aquí tienes nuestra dirección. 😊", number);
-        models.push(model);
-        const modelLocation = messageLocation(number);
-        models.push(modelLocation);
+        // const model = messageText("Aquí tienes nuestra dirección. 😊", number);
+        // models.push(model);
+        // const modelLocation = messageLocation(number);
+        // models.push(modelLocation);
 
     }
     else if (textUser.includes("contacto")) {
-        const model = messageText("📞*Centro de contacto:*\n912345678", number);
-        models.push(model);
+        // const model = messageText("📞*Centro de contacto:*\n912345678", number);
+        // models.push(model);
 
     }
     else {
-        const model = messageText("No entiendo lo que dices", number);
-        models.push(model);
+        // const model = messageText("No entiendo lo que dices", number);
+        // models.push(model);
     }
 
     models.forEach(model => {

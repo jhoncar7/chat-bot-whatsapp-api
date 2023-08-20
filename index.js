@@ -22,7 +22,7 @@ const iniciarServidor = async () => {
         console.log(`Servidor corriendo en el puerto ${PORT}`);
     });
 
-    await messageList('1234')
+    // await messageList('1234')
     // const opt = new MenuOption(
     //     {
     //         title: 'Codigos promocionales',
