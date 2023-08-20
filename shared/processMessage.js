@@ -7,9 +7,9 @@ const process = (textUser, number) => {
 
     if (textUser.includes("hola")) {
         const model = messageText("Hola, un gusto saludarte. 👋", number);
-        const modelList = messageList(number);
+        // const modelList = messageList(number);
         models.push(model);
-        models.push(modelList);
+        // models.push(modelList);
     }
     else if (textUser.includes("gracias")) {
         const model = messageText("Gracias a ti por escribirme. 😉😎", number);
