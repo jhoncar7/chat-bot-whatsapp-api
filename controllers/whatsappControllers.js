@@ -47,7 +47,7 @@ const ReceivedMessage = async (req = request, res = response) => {
             if (!usuario)
                 crearUsuario(name, number)
 
-            if (usuario.status) {
+            if (usuario && usuario.status) {
                 const text = getTextUser(message);
 
                 if (text != '')
