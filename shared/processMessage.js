@@ -50,8 +50,8 @@ const process = (textUser, number) => {
 
     }
     else {
-        // const model = messageText("No entiendo lo que dices", number);
-        // models.push(model);
+        const model = messageText("No entiendo lo que dices, elije algunas de estas opciones: ", number);
+        models.push(model);
     }
 
     models.forEach(model => {
