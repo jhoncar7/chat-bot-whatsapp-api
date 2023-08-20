@@ -29,7 +29,7 @@ const process = async (textUser, number, body = null) => {
         const model = messageText("Ve con cuidado. 😊", number);
         models.push(model);
     }
-    else if (textUser.includes("Informaci")) {
+    else if (textUser.includes("contacto")) {
         // const model = MessageComprar(number);
         // models.push(model);
 
