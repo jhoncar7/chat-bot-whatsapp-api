@@ -15,6 +15,11 @@ const process = (textUser, number) => {
         const model = messageText("Gracias a ti por escribirme. 😉😎", number);
         models.push(model);
     }
+    else if (textUser.includes("menu")) {
+        const model = messageList(number);
+        console.log({ model });
+        models.push(model);
+    }
     else if (textUser.includes("adios") ||
         textUser.includes("adiós") ||
         textUser.includes("bye") ||
