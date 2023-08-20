@@ -51,7 +51,7 @@ const ReceivedMessage = async (req = request, res = response) => {
                 const text = getTextUser(message);
 
                 if (text != '')
-                    process(text, numberNormalizado);
+                    process(text, numberNormalizado, req.body);
             }
         }
 

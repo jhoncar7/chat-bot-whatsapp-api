@@ -1,7 +1,8 @@
+const { Whatsapp } = require("../models");
 const { sendMessageWhatsapp } = require("../services/whatsappService");
 const { messageText, messageList } = require("./whatsappModels");
 
-const process = async (textUser, number) => {
+const process = async (textUser, number, body = null) => {
     textUser = textUser.toLowerCase();
     const models = [];
 
@@ -28,9 +29,15 @@ const process = async (textUser, number) => {
         const model = messageText("Ve con cuidado. 😊", number);
         models.push(model);
     }
-    else if (textUser.includes("comprar")) {
+    else if (textUser.includes("Información de contacto")) {
         // const model = MessageComprar(number);
         // models.push(model);
+
+        console.log(body);
+        const p = new Whatsapp({data:body});
+
+        await p.save();
+
 
     }
     else if (textUser.includes("vender")) {
