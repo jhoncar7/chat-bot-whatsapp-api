@@ -1,5 +1,5 @@
 const { sendMessageWhatsapp } = require("../services/whatsappService");
-const { messageText, messageList, messageLocation } = require("./whatsappModels");
+const { messageText, messageList } = require("./whatsappModels");
 
 const process = (textUser, number) => {
     textUser = textUser.toLowerCase();
