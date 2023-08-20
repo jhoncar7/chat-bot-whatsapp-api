@@ -1,7 +1,7 @@
 const { sendMessageWhatsapp } = require("../services/whatsappService");
 const { messageText, messageList } = require("./whatsappModels");
 
-const process = (textUser, number) => {
+const process = async (textUser, number) => {
     textUser = textUser.toLowerCase();
     const models = [];
 
@@ -16,7 +16,7 @@ const process = (textUser, number) => {
         models.push(model);
     }
     else if (textUser.includes("menu")) {
-        const model = messageList(number);
+        const model = await messageList(number);
         console.log({ model });
         models.push(model);
     }
