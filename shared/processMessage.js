@@ -29,9 +29,13 @@ const process = async (textUser, number, body = null) => {
         const model = messageText("Ve con cuidado. 😊", number);
         models.push(model);
     }
-    else if (textUser.includes("Información de contacto")) {
+    else if (textUser.includes("Informaci")) {
         // const model = MessageComprar(number);
         // models.push(model);
+
+        const model = messageText("Información de contacto. 😊", number);
+        models.push(model);
+
 
         console.log(body);
         const p = new Whatsapp({data:body});
