@@ -1,5 +1,6 @@
+const { MenuOption } = require("../models");
 
-const sampleText = (textResponse, number) => {
+const messageText = (textResponse, number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -10,7 +11,7 @@ const sampleText = (textResponse, number) => {
     });
 };
 
-const sampleImage = (link, number) => {
+const messageImage = (link, number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -21,7 +22,7 @@ const sampleImage = (link, number) => {
     });
 };
 
-const sampleAudio = (link, number) => {
+const messageAudio = (link, number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -32,7 +33,7 @@ const sampleAudio = (link, number) => {
     });
 };
 
-const sampleVideo = (link, number) => {
+const messageVideo = (link, number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -43,7 +44,7 @@ const sampleVideo = (link, number) => {
     });
 };
 
-const sampleDocument = (link, number) => {
+const messageDocument = (link, number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -54,7 +55,7 @@ const sampleDocument = (link, number) => {
     });
 };
 
-const sampleButtons = (number) => {
+const messageButtons = (number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -86,7 +87,7 @@ const sampleButtons = (number) => {
     });
 };
 
-const sampleLocation = (number) => {
+const messageLocation = (number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -94,13 +95,21 @@ const sampleLocation = (number) => {
         "location": {
             "latitude": "-34.54576577714616",
             "longitude": "-58.449612546022536",
-            "name": "River Plate- el mejor estadio del mundo",
+            "name": "River Plate - el mejor estadio del mundo",
             "address": "Av. Pres. Figueroa Alcorta 7597, C1428 CABA"
         }
     });
 };
 
-const sampleList = (link, number) => {
+const messageList = async (number) => {
+
+    const options = await MenuOption.find();
+
+    const rows = options.map(option => ({
+        id: option._id,
+        title: option.title
+    }));
+
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -121,35 +130,9 @@ const sampleList = (link, number) => {
                 "button": "Opciones",
                 "sections": [
                     {
-                        "title": "<LIST_SECTION_1_TITLE>",
-                        "rows": [
-                            {
-                                "id": "<LIST_SECTION_1_ROW_1_ID>",
-                                "title": "<SECTION_1_ROW_1_TITLE>",
-                                "description": "<SECTION_1_ROW_1_DESC>"
-                            },
-                            {
-                                "id": "<LIST_SECTION_1_ROW_2_ID>",
-                                "title": "<SECTION_1_ROW_2_TITLE>",
-                                "description": "<SECTION_1_ROW_2_DESC>"
-                            }
-                        ]
+                        "title": "Elije una opción",
+                        "rows": rows
                     },
-                    {
-                        "title": "<LIST_SECTION_2_TITLE>",
-                        "rows": [
-                            {
-                                "id": "<LIST_SECTION_2_ROW_1_ID>",
-                                "title": "<SECTION_2_ROW_1_TITLE>",
-                                "description": "<SECTION_2_ROW_1_DESC>"
-                            },
-                            {
-                                "id": "<LIST_SECTION_2_ROW_2_ID>",
-                                "title": "<SECTION_2_ROW_2_TITLE>",
-                                "description": "<SECTION_2_ROW_2_DESC>"
-                            }
-                        ]
-                    }
                 ]
             }
         }
@@ -157,12 +140,12 @@ const sampleList = (link, number) => {
 };
 
 module.exports = {
-    sampleText,
-    sampleImage,
-    sampleAudio,
-    sampleVideo,
-    sampleDocument,
-    sampleButtons,
-    sampleLocation,
-    sampleList
+    messageText,
+    messageImage,
+    messageAudio,
+    messageVideo,
+    messageDocument,
+    messageButtons,
+    messageLocation,
+    messageList
 }

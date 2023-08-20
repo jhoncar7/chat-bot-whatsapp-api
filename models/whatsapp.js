@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const WhatsappShema = Schema({
+const WhatsappShema = new Schema({
 
     data: { type: {} },
 

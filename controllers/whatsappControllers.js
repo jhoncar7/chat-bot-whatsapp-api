@@ -1,6 +1,6 @@
 const express = require('express');
-const { sendMessageWhatsapp } = require('../services/whatsappService');
-const { Whatsapp } = require('../models');
+const { process } = require('../shared/processMessage');
+const { Usuario } = require('../models');
 const response = express.response;
 const request = express.request;
 
@@ -28,27 +28,31 @@ const VerifyToken = (req = request, res = response) => {
     }
 };
 
-
 const ReceivedMessage = async (req = request, res = response) => {
     try {
-
-        console.log('entro al metodo ReceivedMessage');
 
         const entry = req.body["entry"][0];
         const changes = entry["changes"][0];
         const value = changes["value"];
-
         const messageObject = value["messages"];
 
         if (messageObject) {
+            const message = messageObject[0];
+            const number = message["from"];
+            const numberNormalizado = normalizeNumber(number);
             const name = value['contacts'][0]['profile']['name'];
-            let number = value['contacts'][0]['wa_id'];
-            number = normalizeNumber(number);
-    
-            const text = getTextUser(messageObject[0]);
 
-            // sendMessageWhatsapp(`Hola ${name}, en que puedo ayudarte?`, number);
-            // sendMessageWhatsapp(`El usuario dijo: ${text}`, number);
+            const usuario = await getUsuario(number);
+
+            if (!usuario)
+                crearUsuario(name, number)
+
+            if (usuario.status) {
+                const text = getTextUser(message);
+
+                if (text != '')
+                    process(text, numberNormalizado);
+            }
         }
 
         res.send("EVENT_RECEIVED");
@@ -71,8 +75,6 @@ const getTextUser = (message) => {
         const interactiveObject = message['interactive']
         const typeInteractive = interactiveObject['type'];
 
-        console.log('interactiveObject: ', interactiveObject);
-
         if (typeInteractive == 'button_reply')
             text = interactiveObject['button_reply']['title'];
 
@@ -92,5 +94,39 @@ const getTextUser = (message) => {
 const normalizeNumber = (number) => {
     return number.startsWith('549') ? '54' + number.substring(3) : number;
 };
+
+const getUsuario = async (numero) => {
+
+    try {
+        const user = await Usuario.findOne({ numero });
+
+        if (!user)
+            return null;
+
+        // if (!user.status) //verificar status
+        //     return null;
+
+        return user;
+
+    } catch (error) {
+        console.log(error);
+        throw error
+    }
+}
+
+const crearUsuario = async (nombre, numero) => {
+    try {
+        nombre = nombre.trim().toLocaleLowerCase();
+        const user = new Usuario({ nombre, numero });
+        if (user) {
+            await user.save();
+            return user;
+        }
+        return null;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
 
 module.exports = { VerifyToken, ReceivedMessage };

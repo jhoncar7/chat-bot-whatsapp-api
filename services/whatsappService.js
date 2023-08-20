@@ -40,17 +40,8 @@
 
 const axios = require('axios');
 
-const sendMessageWhatsapp = async (textResponse, number) => {
+const sendMessageWhatsapp = async (data) => {
     try {
-
-        const data = {
-            messaging_product: "whatsapp",
-            to: number,
-            type: "text",
-            text: {
-                body: textResponse
-            },
-        };
 
         const response = await axios.post(`https://graph.facebook.com/v17.0/${process.env.ID_PHONE}/messages`, data, {
             headers: {
