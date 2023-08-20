@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const UsuarioShema = new Schema({
     nombre: { type: String, required: [true, 'El nombre es obligatorio'] },
     numero: { type: String, required: [true, 'El correo es obligatorio'], unique: true },
-    estado: { type: Boolean, default: true },
+    status: { type: Boolean, default: true },
 });
 
 
