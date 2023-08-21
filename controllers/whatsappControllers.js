@@ -74,7 +74,6 @@ const getTextUser = (message) => {
 
     if (typeMessage == 'text') {
         text = message['text']['body'];
-        console.log({ text });
     } else if (typeMessage == 'interactive') {
 
         const interactiveObject = message['interactive']
