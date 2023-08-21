@@ -1,4 +1,4 @@
-const { Usuario } = require("../models");
+const { Usuario, Cupones } = require("../models");
 const { sendMessageWhatsapp } = require("../services/whatsappService");
 const { messageText, messageList, messageLocation, messageDocument } = require("./whatsappModels");
 
@@ -42,8 +42,24 @@ const processText = async (textUser, number) => {
     else if (textUser.includes("codigos")) {
 
         const usuario = await Usuario.findOne({ numero: number })
-        const model = messageText("Codigos en proceso😊", number);
-        models.push(model);
+
+        if (usuario) {
+            if (usuario.codigos_activos.length > 0) {
+                const model = messageText(`Ya tenes un codigo activo que aun no has usado \Codigo activo: *${usuario.codigos_activos[0].toString().toUpperCase()}*`, number);
+                models.push(model);
+            } else {
+                const codigo = await Cupones.findOne({ status: true, asignado: false });
+
+                if (codigo) {
+                    codigo.asignado = true;
+                    codigo.usuario.push(usuario._id);
+                    await randomCoupon.save();
+
+                    const model = messageText(`Tu codigo promocional es \Codigo promocional: *${usuario.codigos_activos[0].toString().toUpperCase()}*`, number);
+                    models.push(model);
+                }
+            }
+        }
     }
     else {
         const model = messageText("No entiendo lo que dices, elije algunas de estas opciones: ", number);
