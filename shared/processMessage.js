@@ -13,7 +13,7 @@ const processText = async (textUser, number) => {
         models.push(modelList);
     }
     else if (textUser.includes("gracias")) {
-        const model = messageText("Gracias a ti por escribirme. 😉😎", number);
+        const model = messageText("Gracias a vos por contactarnos. 😉😎", number);
         models.push(model);
     }
     else if (textUser.includes("menu")) {
@@ -57,10 +57,8 @@ const processText = async (textUser, number) => {
                     usuario.codigos_activos.push(codigo.codigo);
 
                     await Promise.all([codigo.save(), usuario.save()])
-                    // await codigo.save();
-                    // await usuario.save();
 
-                    const model = messageText(`Tu codigo promocional es \nCodigo promocional: *${codigo.codigo.toLocaleUpperCase()}*`, number);
+                    const model = messageText(`Tu codigo promocional es \nCodigo: *${codigo.codigo.toLocaleUpperCase()}*`, number);
                     models.push(model);
                 }
             }
@@ -72,10 +70,6 @@ const processText = async (textUser, number) => {
         models.push(model);
         models.push(modelList);
     }
-
-    // for (let i = 0; i < models.length; i++) {
-    //     await sendMessageWhatsapp(models[i]);
-    // }
 
     models.forEach(model => {
         sendMessageWhatsapp(model);
