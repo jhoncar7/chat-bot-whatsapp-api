@@ -53,7 +53,7 @@ const processText = async (textUser, number) => {
                 if (codigo) {
                     codigo.asignado = true;
                     codigo.usuario.push(usuario._id);
-                    await randomCoupon.save();
+                    await codigo.save();
 
                     const model = messageText(`Tu codigo promocional es \Codigo promocional: *${usuario.codigos_activos[0].toString().toUpperCase()}*`, number);
                     models.push(model);
