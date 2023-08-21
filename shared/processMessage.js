@@ -54,7 +54,7 @@ const processText = async (textUser, number) => {
                     codigo.asignado = true;
                     codigo.usuario.push(usuario._id);
 
-                    usuario.codigos_activos.push(codigo.codigo);
+                    usuario.codigos_activos.push(codigo._id);
 
                     await Promise.all([codigo.save(), usuario.save()])
                     // await codigo.save();
