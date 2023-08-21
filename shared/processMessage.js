@@ -6,11 +6,9 @@ const processText = async (textUser, number) => {
     const models = [];
 
     if (textUser.includes("hola")) {
-        const model = messageText("Hola, un gusto saludarte. 👋", number);
-        const model2 = messageText("En que puedo ayudarte?", number);
-        const modelList = messageList(number);
+        const model = messageText("Hola, un gusto saludarte. 👋, en que podemos ayudarte?", number);
+        const modelList = await messageList(number);
         models.push(model);
-        models.push(model2);
         models.push(modelList);
     }
     else if (textUser.includes("gracias")) {
@@ -46,18 +44,18 @@ const processText = async (textUser, number) => {
     }
     else {
         const model = messageText("No entiendo lo que dices, elije algunas de estas opciones: ", number);
-        const modelList = messageList(number);
+        const modelList = await messageList(number);
         models.push(model);
         models.push(modelList);
     }
 
-    for (let i = 0; i < models.length; i++) {
-        await sendMessageWhatsapp(models[i]);
-    }
+    // for (let i = 0; i < models.length; i++) {
+    //     await sendMessageWhatsapp(models[i]);
+    // }
 
-    // models.forEach(model => {
-    //     sendMessageWhatsapp(model);
-    // });
+    models.forEach(model => {
+        sendMessageWhatsapp(model);
+    });
 }
 
 module.exports = {
