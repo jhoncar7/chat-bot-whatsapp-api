@@ -5,8 +5,8 @@ const UsuarioShema = new Schema({
     numero: { type: String, required: [true, 'El correo es obligatorio'], unique: true },
     wa_id: { type: String, required: [true, 'El wa_id es obligatorio'], unique: true },
     status: { type: Boolean, default: true },
-    codigos_activos: [{ type: Schema.Types.ObjectId, ref: 'Cupones' }],
-    codigos_usados: [{ type: Schema.Types.ObjectId, ref: 'Cupones' }],
+    codigos_activos: [{ type: String }],
+    codigos_usados: [{ type: String }],
 });
 
 
