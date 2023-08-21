@@ -81,12 +81,10 @@ const getTextUser = (message) => {
 
         if (typeInteractive == 'button_reply') {
             text = interactiveObject['button_reply']['title'];
-            console.log('button_reply: ', text);
         }
 
         else if (typeInteractive == 'list_reply') {
             text = interactiveObject['list_reply']['title'];
-            console.log('list_reply: ', text);
         }
 
         else

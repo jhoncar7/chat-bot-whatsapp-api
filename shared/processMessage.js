@@ -41,7 +41,9 @@ const processText = async (textUser, number) => {
     }
     else if (textUser.includes("codigos")) {
 
-        const usuario = await Usuario.findOne({ numero: number })
+        const usuario = await Usuario.findOne({ numero: number });
+
+        console.log({usuario});
 
         if (usuario) {
             if (usuario.codigos_activos.length > 0) {
@@ -55,7 +57,7 @@ const processText = async (textUser, number) => {
                     codigo.usuario.push(usuario._id);
                     await codigo.save();
 
-                    const model = messageText(`Tu codigo promocional es \Codigo promocional: *${usuario.codigos_activos[0].toString().toUpperCase()}*`, number);
+                    const model = messageText(`Tu codigo promocional es \Codigo promocional: *${codigo}*`, number);
                     models.push(model);
                 }
             }
