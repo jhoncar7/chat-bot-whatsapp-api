@@ -60,7 +60,7 @@ const processText = async (textUser, number) => {
                     // await codigo.save();
                     // await usuario.save();
 
-                    const model = messageText(`Tu codigo promocional es \nCodigo promocional: *${codigo.codigo}*`, number);
+                    const model = messageText(`Tu codigo promocional es \nCodigo promocional: *${codigo.codigo.toLocaleUpperCase()}*`, number);
                     models.push(model);
                 }
             }
