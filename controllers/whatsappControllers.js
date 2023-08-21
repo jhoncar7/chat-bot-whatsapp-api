@@ -51,7 +51,7 @@ const ReceivedMessage = async (req = request, res = response) => {
                 const text = getTextUser(message);
 
                 if (text != '')
-                    process(text, numberNormalizado, req.body);
+                    process(text, numberNormalizado);
             }
         }
 
@@ -67,19 +67,23 @@ const getTextUser = (message) => {
     let text = '';
     const typeMessage = message['type'];
 
-    if (typeMessage == 'text')
+    if (typeMessage == 'text') {
         text = message['text']['body'];
-
-    else if (typeMessage == 'interactive') {
+        console.log({ text });
+    } else if (typeMessage == 'interactive') {
 
         const interactiveObject = message['interactive']
         const typeInteractive = interactiveObject['type'];
 
-        if (typeInteractive == 'button_reply')
+        if (typeInteractive == 'button_reply') {
             text = interactiveObject['button_reply']['title'];
+            console.log('button_reply: ', text);
+        }
 
-        else if (typeInteractive == 'list_reply')
+        else if (typeInteractive == 'list_reply') {
             text = interactiveObject['list_reply']['title'];
+            console.log('list_reply: ', text);
+        }
 
         else
             console.log('Sin mensaje en INTERACTIVE');
