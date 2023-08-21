@@ -1,5 +1,4 @@
 import { Schema, model } from 'mongoose';
-// const { Schema, model } = require('mongoose');
 
 const CuponesShema = new Schema({
     codigo: { type: String, required: [true, 'El correo es obligatorio'], unique: true },
@@ -13,7 +12,5 @@ CuponesShema.methods.toJSON = function () {
     const { __v, ...data } = this.toObject();
     return data;
 }
-
-// module.exports = model('Cupones', CuponesShema);
 
 export default model('Cupones', CuponesShema);

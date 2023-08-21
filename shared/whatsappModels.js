@@ -1,5 +1,4 @@
 import { MenuOption } from '../models/index.js'
-// const { MenuOption } = require("../models");
 
 export const messageText = (textResponse, number) => {
     return JSON.stringify({
@@ -141,14 +140,3 @@ export const messageList = async (number) => {
         }
     });
 };
-
-// module.exports = {
-//     messageText,
-//     messageImage,
-//     messageAudio,
-//     messageVideo,
-//     messageDocument,
-//     messageButtons,
-//     messageLocation,
-//     messageList
-// }

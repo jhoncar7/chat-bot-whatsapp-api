@@ -2,12 +2,6 @@ import { request, response } from 'express';
 import { Usuario } from '../models/index.js'
 import { processText} from '../shared/processMessage.js'
 
-// const { processText } = require('../shared/processMessage');
-// const { Usuario } = require('../models');
-// const express = require('express');
-// const response = express.response;
-// const request = express.request;
-
 export const VerifyToken = (req = request, res = response) => {
     try {
 
@@ -138,5 +132,3 @@ const crearUsuario = async (nombre, numero) => {
         return null;
     }
 }
-
-// module.exports = { VerifyToken, ReceivedMessage };

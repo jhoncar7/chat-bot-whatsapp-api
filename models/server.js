@@ -4,11 +4,10 @@ import router from '../routes/routes.js';
 import { dbConnection } from '../database/config.js';
 
 
-
 export default class Server {
     
     constructor() {
-        console.log('print server');
+        
         this.app = express();
         this.port = process.env.PORT;
         this.apiWhatsapp = '/api-whatsapp';

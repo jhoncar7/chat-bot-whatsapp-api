@@ -1,5 +1,4 @@
 import { Schema, model } from 'mongoose';
-// const { Schema, model } = require('mongoose');
 
 const UsuarioShema = new Schema({
     nombre: { type: String, required: [true, 'El nombre es obligatorio'] },
@@ -15,7 +14,5 @@ UsuarioShema.methods.toJSON = function () {
     const { __v, ...data } = this.toObject();
     return data;
 }
-
-// module.exports = model('Usuario', UsuarioShema);
 
 export default model('Usuario', UsuarioShema);

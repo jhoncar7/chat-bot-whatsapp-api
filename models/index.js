@@ -7,14 +7,16 @@ export { default as Usuario } from './usuario.js'
 export { default as Cupones } from './cupones.js'
 export { default as Server } from './server.js'
 
-// const Whatsapp = require('./whatsapp')
-// const MenuOption = require('./menuOption')
-// const Usuario = require('./usuario')
-// const Cupones = require('./cupones')
+// import Whatsapp from './whatsapp.js'
+// import MenuOption from './menuOption.js'
+// import Usuario from './usuario.js'
+// import Cupones from './cupones.js'
+// import Server from './server.js'
 
-// module.exports = {
+// export {
 //     Whatsapp,
 //     MenuOption,
 //     Usuario,
-//     Cupones
+//     Cupones,
+//     Server,
 // }
