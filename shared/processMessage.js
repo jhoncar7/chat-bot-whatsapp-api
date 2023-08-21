@@ -39,6 +39,7 @@ const processText = async (textUser, number) => {
 
     }
     else if (textUser.includes("codigos")) {
+        
         const model = messageText("Codigos en proceso😊", number);
         models.push(model);
     }

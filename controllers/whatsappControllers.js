@@ -121,7 +121,7 @@ const getUsuario = async (numero) => {
 const crearUsuario = async (nombre, numero) => {
     try {
         nombre = nombre.trim().toLocaleLowerCase();
-        const user = new Usuario({ nombre, numero });
+        const user = new Usuario({ nombre, numero: normalizeNumber(numero), wa_id: numero });
         if (user) {
             await user.save();
             return user;
