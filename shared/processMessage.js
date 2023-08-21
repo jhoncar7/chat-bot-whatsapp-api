@@ -47,7 +47,7 @@ const processText = async (textUser, number) => {
 
         if (usuario) {
             if (usuario.codigos_activos.length > 0) {
-                const model = messageText(`Ya tenes un codigo activo que aun no has usado \Codigo activo: *${usuario.codigos_activos[0].toString().toUpperCase()}*`, number);
+                const model = messageText(`Ya tenes un codigo activo que aun no has usado \nCodigo activo: *${usuario.codigos_activos[0].toString().toUpperCase()}*`, number);
                 models.push(model);
             } else {
                 const codigo = await Cupones.findOne({ status: true, asignado: false });
@@ -57,7 +57,7 @@ const processText = async (textUser, number) => {
                     codigo.usuario.push(usuario._id);
                     await codigo.save();
 
-                    const model = messageText(`Tu codigo promocional es \Codigo promocional: *${codigo.codigo}*`, number);
+                    const model = messageText(`Tu codigo promocional es \nCodigo promocional: *${codigo.codigo}*`, number);
                     models.push(model);
                 }
             }
