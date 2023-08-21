@@ -57,7 +57,7 @@ const processText = async (textUser, number) => {
                     codigo.usuario.push(usuario._id);
                     await codigo.save();
 
-                    const model = messageText(`Tu codigo promocional es \Codigo promocional: *${codigo}*`, number);
+                    const model = messageText(`Tu codigo promocional es \Codigo promocional: *${codigo.codigo}*`, number);
                     models.push(model);
                 }
             }
