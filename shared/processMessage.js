@@ -33,7 +33,7 @@ const processText = async (textUser, number) => {
         models.push(model);
     }
     else if (textUser.includes("ubicación")) {
-        const model = messageText("Aquí tienes nuestra dirección. esperamos que nos visite prnto 😊", number);
+        const model = messageText("Aquí tienes nuestra dirección. esperamos que nos visite pronto 😊", number);
         const modelLocation = messageLocation(number);
         models.push(model);
         models.push(modelLocation);
