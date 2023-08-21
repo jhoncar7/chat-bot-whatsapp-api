@@ -1,5 +1,5 @@
 const express = require('express');
-const { process } = require('../shared/processMessage');
+const { processText } = require('../shared/processMessage');
 const { Usuario } = require('../models');
 const response = express.response;
 const request = express.request;
@@ -51,7 +51,7 @@ const ReceivedMessage = async (req = request, res = response) => {
                 const text = getTextUser(message);
 
                 if (text != '')
-                    process(text, numberNormalizado);
+                    processText(text, numberNormalizado);
             }
         }
 
