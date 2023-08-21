@@ -1,3 +1,4 @@
+const { Usuario } = require("../models");
 const { sendMessageWhatsapp } = require("../services/whatsappService");
 const { messageText, messageList, messageLocation, messageDocument } = require("./whatsappModels");
 
@@ -39,7 +40,8 @@ const processText = async (textUser, number) => {
 
     }
     else if (textUser.includes("codigos")) {
-        
+
+        const usuario = await Usuario.findOne({ numero: number })
         const model = messageText("Codigos en proceso😊", number);
         models.push(model);
     }

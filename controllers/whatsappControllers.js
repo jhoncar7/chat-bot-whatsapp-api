@@ -44,8 +44,13 @@ const ReceivedMessage = async (req = request, res = response) => {
 
             const usuario = await getUsuario(number);
 
-            if (!usuario)
+            if (!usuario) {
                 crearUsuario(name, number)
+                const text = getTextUser(message);
+
+                if (text != '')
+                    processText(text, numberNormalizado);
+            }
 
             if (usuario && usuario.status) {
                 const text = getTextUser(message);
@@ -102,7 +107,7 @@ const normalizeNumber = (number) => {
 const getUsuario = async (numero) => {
 
     try {
-        const user = await Usuario.findOne({ numero });
+        const user = await Usuario.findOne({ wa_id: numero });
 
         if (!user)
             return null;
