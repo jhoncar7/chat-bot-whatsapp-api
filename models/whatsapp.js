@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+import { Schema, model } from 'mongoose';
+// const { Schema, model } = require('mongoose');
 
 const WhatsappShema = new Schema({
 
@@ -13,7 +14,10 @@ WhatsappShema.methods.toJSON = function () {
 }
 
 
-module.exports = model('Whatsapp', WhatsappShema);
+// module.exports = model('Whatsapp', WhatsappShema);
+
+export default model('Whatsapp', WhatsappShema);
+
 //Se le Pone Usuario moongose le agrega la 's' y lo crea en la base de datos
 
 

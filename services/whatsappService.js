@@ -29,9 +29,10 @@
 // };
 
 
-const axios = require('axios');
+// const axios = require('axios');
+import axios from 'axios';
 
-const sendMessageWhatsapp = async (data) => {
+export const sendMessageWhatsapp = async (data) => {
     try {
 
         const response = await axios.post(`https://graph.facebook.com/v17.0/${process.env.ID_PHONE}/messages`, data, {
@@ -47,6 +48,6 @@ const sendMessageWhatsapp = async (data) => {
     }
 };
 
-module.exports = {
-    sendMessageWhatsapp
-}
+// module.exports = {
+//     sendMessageWhatsapp
+// }

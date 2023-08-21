@@ -1,8 +1,12 @@
-const { Usuario, Cupones } = require("../models");
-const { sendMessageWhatsapp } = require("../services/whatsappService");
-const { messageText, messageList, messageLocation, messageDocument } = require("./whatsappModels");
+import { Usuario, Cupones } from '../models/index.js';
+import { sendMessageWhatsapp } from '../services/whatsappService.js';
+import { messageText, messageLocation, messageList, messageDocument } from './whatsappModels.js';
 
-const processText = async (textUser, number) => {
+// const { Usuario, Cupones } = require("../models");
+// const { sendMessageWhatsapp } = require("../services/whatsappService");
+// const { messageText, messageList, messageLocation, messageDocument } = require("./whatsappModels");
+
+export const processText = async (textUser, number) => {
     textUser = textUser.toLowerCase();
     const models = [];
 
@@ -76,6 +80,6 @@ const processText = async (textUser, number) => {
     });
 }
 
-module.exports = {
-    processText
-};
+// module.exports = {
+//     processText
+// };

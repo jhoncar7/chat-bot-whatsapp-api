@@ -1,6 +1,7 @@
-const { MenuOption } = require("../models");
+import { MenuOption } from '../models/index.js'
+// const { MenuOption } = require("../models");
 
-const messageText = (textResponse, number) => {
+export const messageText = (textResponse, number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -11,7 +12,7 @@ const messageText = (textResponse, number) => {
     });
 };
 
-const messageImage = (link, number) => {
+export const messageImage = (link, number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -22,7 +23,7 @@ const messageImage = (link, number) => {
     });
 };
 
-const messageAudio = (link, number) => {
+export const messageAudio = (link, number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -33,7 +34,7 @@ const messageAudio = (link, number) => {
     });
 };
 
-const messageVideo = (link, number) => {
+export const messageVideo = (link, number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -44,7 +45,7 @@ const messageVideo = (link, number) => {
     });
 };
 
-const messageDocument = (link, number) => {
+export const messageDocument = (link, number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -57,7 +58,7 @@ const messageDocument = (link, number) => {
     });
 };
 
-const messageButtons = (number) => {
+export const messageButtons = (number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -89,7 +90,7 @@ const messageButtons = (number) => {
     });
 };
 
-const messageLocation = (number) => {
+export const messageLocation = (number) => {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -103,7 +104,7 @@ const messageLocation = (number) => {
     });
 };
 
-const messageList = async (number) => {
+export const messageList = async (number) => {
 
     const options = await MenuOption.find();
 
@@ -141,13 +142,13 @@ const messageList = async (number) => {
     });
 };
 
-module.exports = {
-    messageText,
-    messageImage,
-    messageAudio,
-    messageVideo,
-    messageDocument,
-    messageButtons,
-    messageLocation,
-    messageList
-}
+// module.exports = {
+//     messageText,
+//     messageImage,
+//     messageAudio,
+//     messageVideo,
+//     messageDocument,
+//     messageButtons,
+//     messageLocation,
+//     messageList
+// }

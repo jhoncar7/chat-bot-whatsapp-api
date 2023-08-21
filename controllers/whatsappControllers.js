@@ -1,10 +1,14 @@
-const express = require('express');
-const { processText } = require('../shared/processMessage');
-const { Usuario } = require('../models');
-const response = express.response;
-const request = express.request;
+import { request, response } from 'express';
+import { Usuario } from '../models/index.js'
+import { processText} from '../shared/processMessage.js'
 
-const VerifyToken = (req = request, res = response) => {
+// const { processText } = require('../shared/processMessage');
+// const { Usuario } = require('../models');
+// const express = require('express');
+// const response = express.response;
+// const request = express.request;
+
+export const VerifyToken = (req = request, res = response) => {
     try {
 
         console.log('Entro');
@@ -28,7 +32,7 @@ const VerifyToken = (req = request, res = response) => {
     }
 };
 
-const ReceivedMessage = async (req = request, res = response) => {
+export const ReceivedMessage = async (req = request, res = response) => {
     try {
 
         const entry = req.body["entry"][0];
@@ -135,4 +139,4 @@ const crearUsuario = async (nombre, numero) => {
     }
 }
 
-module.exports = { VerifyToken, ReceivedMessage };
+// module.exports = { VerifyToken, ReceivedMessage };

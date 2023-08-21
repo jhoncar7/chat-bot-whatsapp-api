@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+import { Schema, model } from 'mongoose';
+// const { Schema, model } = require('mongoose');
 
 const MenuOptionShema = new Schema({
 
@@ -15,4 +16,5 @@ MenuOptionShema.methods.toJSON = function () {
     return data;
 }
 
-module.exports = model('MenuOption', MenuOptionShema);
+// module.exports = model('MenuOption', MenuOptionShema);
+export default model('MenuOption', MenuOptionShema);
