@@ -33,7 +33,7 @@ const processText = async (textUser, number) => {
         const model = messageText("Información de contacto. 😊", number);
         models.push(model);
     }
-    else if (textUser.includes("Productos")) {
+    else if (textUser.includes("productos")) {
         // const model = messageText("👉 Regístrate en el siguiente formulario para poder evaluarte: https://form.jotform.com/222507994363665", number);
         // models.push(model);
         const model = messageText("Productos 😊", number);
@@ -48,7 +48,7 @@ const processText = async (textUser, number) => {
         models.push(model);
 
     }
-    else if (textUser.includes("Codigos")) {
+    else if (textUser.includes("codigos")) {
         // const model = messageText("📞*Centro de contacto:*\n912345678", number);
         // models.push(model);
         const model = messageText("Codigos 😊", number);
