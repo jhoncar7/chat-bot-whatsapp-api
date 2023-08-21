@@ -7,8 +7,10 @@ const processText = async (textUser, number) => {
 
     if (textUser.includes("hola")) {
         const model = messageText("Hola, un gusto saludarte. 👋", number);
+        const model2 = messageText("En que puedo ayudarte?", number);
         const modelList = messageList(number);
         models.push(model);
+        models.push(model2);
         models.push(modelList);
     }
     else if (textUser.includes("gracias")) {
@@ -39,8 +41,6 @@ const processText = async (textUser, number) => {
 
     }
     else if (textUser.includes("codigos")) {
-        // const model = messageText("📞*Centro de contacto:*\n912345678", number);
-        // models.push(model);
         const model = messageText("Codigos en proceso😊", number);
         models.push(model);
     }
@@ -51,9 +51,13 @@ const processText = async (textUser, number) => {
         models.push(modelList);
     }
 
-    models.forEach(model => {
-        sendMessageWhatsapp(model);
-    });
+    for (let i = 0; i < models.length; i++) {
+        await sendMessageWhatsapp(models[i]);
+    }
+
+    // models.forEach(model => {
+    //     sendMessageWhatsapp(model);
+    // });
 }
 
 module.exports = {
