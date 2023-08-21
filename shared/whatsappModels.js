@@ -51,7 +51,9 @@ const messageDocument = (link, number) => {
         "to": number,
         "type": "document",
         "document": {
-            "link": link
+            "link": link,
+            "caption": "Productos",
+            "filename": "Productos de construcción"
         },
     });
 };

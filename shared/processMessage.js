@@ -1,6 +1,5 @@
-const { Whatsapp } = require("../models");
 const { sendMessageWhatsapp } = require("../services/whatsappService");
-const { messageText, messageList } = require("./whatsappModels");
+const { messageText, messageList, messageLocation, messageDocument } = require("./whatsappModels");
 
 const processText = async (textUser, number) => {
     textUser = textUser.toLowerCase();
@@ -18,40 +17,31 @@ const processText = async (textUser, number) => {
     }
     else if (textUser.includes("menu")) {
         const model = await messageList(number);
-        console.log({ model });
         models.push(model);
     }
-    else if (textUser.includes("adios") ||
-        textUser.includes("adiós") ||
-        textUser.includes("bye") ||
-        textUser.includes("me voy")
-    ) {
+    else if (textUser.includes("adios") || textUser.includes("adiós") || textUser.includes("bye") || textUser.includes("me voy")) {
         const model = messageText("Hasta pronto. 😊", number);
         models.push(model);
     }
     else if (textUser.includes("contacto")) {
-        const model = messageText("Información de contacto. 😊", number);
+        const model = messageText("*Información de contacto:*\nTelefono: 912345678 \nEmail: Tunegocio@email.com", number);
         models.push(model);
     }
     else if (textUser.includes("productos")) {
-        // const model = messageText("👉 Regístrate en el siguiente formulario para poder evaluarte: https://form.jotform.com/222507994363665", number);
-        // models.push(model);
-        const model = messageText("Productos 😊", number);
+        const model = messageDocument(process.env.PRODUCTOS, number);
         models.push(model);
     }
     else if (textUser.includes("ubicación")) {
-        // const model = messageText("Aquí tienes nuestra dirección. 😊", number);
-        // models.push(model);
-        // const modelLocation = messageLocation(number);
-        // models.push(modelLocation);
-        const model = messageText("ubicación 😊", number);
+        const model = messageText("Aquí tienes nuestra dirección. esperamos que nos visite prnto 😊", number);
+        const modelLocation = messageLocation(number);
         models.push(model);
+        models.push(modelLocation);
 
     }
     else if (textUser.includes("codigos")) {
         // const model = messageText("📞*Centro de contacto:*\n912345678", number);
         // models.push(model);
-        const model = messageText("Codigos 😊", number);
+        const model = messageText("Codigos en proceso😊", number);
         models.push(model);
     }
     else {
